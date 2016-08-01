@@ -1,0 +1,11 @@
+object frmCommon: TfrmCommon
+  Left = 250
+  Height = 240
+  Top = 250
+  Width = 320
+  Caption = 'frmCommon'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '1.6.0.4'
+end

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CQRPROP
+Comment=Shows propagation data provided by Paul, N0NBH
+Exec=cqrprop
+Terminal=false
+Type=Application
+Icon=cqrprop.png
+Categories=Utility;HamRadio
+Keywords=Ham;Radio;Propagation;
+

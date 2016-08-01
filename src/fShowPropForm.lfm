@@ -1,0 +1,8 @@
+inherited frmShowPropForm: TfrmShowPropForm
+  Left = 763
+  Top = 414
+  BorderStyle = bsNone
+  Caption = 'frmShowPropForm'
+  OnCreate = FormCreate
+  OnShow = FormShow
+end
