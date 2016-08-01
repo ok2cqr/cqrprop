@@ -4,5 +4,8 @@ inherited frmShowPropForm: TfrmShowPropForm
   BorderStyle = bsNone
   Caption = 'frmShowPropForm'
   OnCreate = FormCreate
+  OnMouseDown = FormMouseDown
+  OnMouseMove = FormMouseMove
+  OnMouseUp = FormMouseUp
   OnShow = FormShow
 end
