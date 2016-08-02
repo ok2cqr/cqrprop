@@ -4,8 +4,58 @@ inherited frmShowPropForm: TfrmShowPropForm
   BorderStyle = bsNone
   Caption = 'frmShowPropForm'
   OnCreate = FormCreate
-  OnMouseDown = FormMouseDown
-  OnMouseMove = FormMouseMove
-  OnMouseUp = FormMouseUp
   OnShow = FormShow
+  object imgProp: TImage[0]
+    Left = 0
+    Height = 240
+    Top = 0
+    Width = 320
+    Align = alClient
+    OnMouseDown = imgPropMouseDown
+    OnMouseMove = imgPropMouseMove
+    OnMouseUp = imgPropMouseUp
+    PopupMenu = popMenu
+  end
+  object popMenu: TPopupMenu[1]
+    left = 256
+    top = 48
+    object MenuItem1: TMenuItem
+      Action = acOptions
+    end
+    object MenuItem2: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem3: TMenuItem
+      Action = acAbout
+    end
+    object MenuItem7: TMenuItem
+      Action = acClose
+    end
+    object MenuItem6: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem5: TMenuItem
+      Action = acRefresh
+    end
+  end
+  object acProp: TActionList[2]
+    left = 248
+    top = 128
+    object acOptions: TAction
+      Caption = 'Options'
+      OnExecute = acOptionsExecute
+    end
+    object acRefresh: TAction
+      Caption = 'Refresh'
+      OnExecute = acRefreshExecute
+    end
+    object acAbout: TAction
+      Caption = 'About'
+      OnExecute = acAboutExecute
+    end
+    object acClose: TAction
+      Caption = 'Close'
+      OnExecute = acCloseExecute
+    end
+  end
 end

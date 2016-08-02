@@ -5,21 +5,39 @@ unit fShowPropForm;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, fCommon;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
+  Menus, ActnList, fCommon;
 
 type
 
   { TfrmShowPropForm }
 
   TfrmShowPropForm = class(TfrmCommon)
-    procedure FormMouseDown(Sender : TObject; Button : TMouseButton;
-      Shift : TShiftState; X, Y : Integer);
-    procedure FormMouseMove(Sender : TObject; Shift : TShiftState; X,
-      Y : Integer);
-    procedure FormMouseUp(Sender : TObject; Button : TMouseButton;
-      Shift : TShiftState; X, Y : Integer);
+    acProp : TActionList;
+    acOptions : TAction;
+    acAbout : TAction;
+    acRefresh : TAction;
+    acClose : TAction;
+    imgProp : TImage;
+    MenuItem1 : TMenuItem;
+    MenuItem2 : TMenuItem;
+    MenuItem3 : TMenuItem;
+    MenuItem5 : TMenuItem;
+    MenuItem6 : TMenuItem;
+    MenuItem7 : TMenuItem;
+    popMenu : TPopupMenu;
+    procedure acAboutExecute(Sender : TObject);
+    procedure acCloseExecute(Sender : TObject);
+    procedure acOptionsExecute(Sender : TObject);
+    procedure acRefreshExecute(Sender : TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure imgPropMouseDown(Sender : TObject; Button : TMouseButton;
+      Shift : TShiftState; X, Y : Integer);
+    procedure imgPropMouseMove(Sender : TObject; Shift : TShiftState; X,
+      Y : Integer);
+    procedure imgPropMouseUp(Sender : TObject; Button : TMouseButton;
+      Shift : TShiftState; X, Y : Integer);
   private
     OldX, OldY : Integer;
     FormMoving : Boolean;
@@ -34,31 +52,24 @@ implementation
 
 {$R *.lfm}
 
-procedure TfrmShowPropForm.FormMouseDown(Sender : TObject;
-  Button : TMouseButton; Shift : TShiftState; X, Y : Integer);
+procedure TfrmShowPropForm.acOptionsExecute(Sender : TObject);
 begin
-  if (Button = mbLeft) then
-  begin
-    FormMoving := True;
-    OldX := X;
-    OldY := Y
-  end
+  //
 end;
 
-procedure TfrmShowPropForm.FormMouseMove(Sender : TObject; Shift : TShiftState;
-  X, Y : Integer);
+procedure TfrmShowPropForm.acAboutExecute(Sender : TObject);
 begin
-  if FormMoving then
-  begin
-    Left := Left + (X - OldX);
-    Top  := Top + (Y - OldY)
-  end
+  //
 end;
 
-procedure TfrmShowPropForm.FormMouseUp(Sender : TObject; Button : TMouseButton;
-  Shift : TShiftState; X, Y : Integer);
+procedure TfrmShowPropForm.acCloseExecute(Sender : TObject);
 begin
-  FormMoving := False
+  Close()
+end;
+
+procedure TfrmShowPropForm.acRefreshExecute(Sender : TObject);
+begin
+  //
 end;
 
 procedure TfrmShowPropForm.FormShow(Sender: TObject);
@@ -72,6 +83,33 @@ procedure TfrmShowPropForm.FormClose(Sender: TObject; var CloseAction: TCloseAct
 begin
   inherited;
   Application.Terminate
+end;
+
+procedure TfrmShowPropForm.imgPropMouseDown(Sender : TObject;
+  Button : TMouseButton; Shift : TShiftState; X, Y : Integer);
+begin
+  if (Button = mbLeft) then
+  begin
+    FormMoving := True;
+    OldX := X;
+    OldY := Y
+  end
+end;
+
+procedure TfrmShowPropForm.imgPropMouseMove(Sender : TObject;
+  Shift : TShiftState; X, Y : Integer);
+begin
+  if FormMoving then
+  begin
+    Left := Left + (X - OldX);
+    Top  := Top + (Y - OldY)
+  end
+end;
+
+procedure TfrmShowPropForm.imgPropMouseUp(Sender : TObject;
+  Button : TMouseButton; Shift : TShiftState; X, Y : Integer);
+begin
+  FormMoving := False
 end;
 
 end.
