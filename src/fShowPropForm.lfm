@@ -29,6 +29,7 @@ inherited frmShowPropForm: TfrmShowPropForm
       Height = 16
       Top = 0
       Width = 40
+      AutoSize = True
       OnMouseDown = imgPropMouseDown
       OnMouseMove = imgPropMouseMove
       OnMouseUp = imgPropMouseUp
@@ -76,5 +77,11 @@ inherited frmShowPropForm: TfrmShowPropForm
       Caption = 'Close'
       OnExecute = acCloseExecute
     end
+  end
+  object tmrImageDownload: TTimer[3]
+    Enabled = False
+    OnTimer = tmrImageDownloadTimer
+    left = 64
+    top = 192
   end
 end
