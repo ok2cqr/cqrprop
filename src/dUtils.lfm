@@ -1,0 +1,7 @@
+object dmUtils: TdmUtils
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 1165
+  VerticalOffset = 516
+  Width = 150
+end
