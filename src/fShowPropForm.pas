@@ -25,6 +25,7 @@ type
     MenuItem5 : TMenuItem;
     MenuItem6 : TMenuItem;
     MenuItem7 : TMenuItem;
+    pnlInfo : TPanel;
     popMenu : TPopupMenu;
     procedure acAboutExecute(Sender : TObject);
     procedure acCloseExecute(Sender : TObject);

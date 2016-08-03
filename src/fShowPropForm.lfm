@@ -1,24 +1,43 @@
 inherited frmShowPropForm: TfrmShowPropForm
-  Left = 763
-  Top = 414
+  Left = 1023
+  Height = 311
+  Top = 413
+  Width = 155
   BorderStyle = bsNone
   Caption = 'frmShowPropForm'
+  ClientHeight = 311
+  ClientWidth = 155
   OnCreate = FormCreate
   OnShow = FormShow
-  object imgProp: TImage[0]
+  object pnlInfo: TPanel[0]
     Left = 0
-    Height = 240
+    Height = 311
     Top = 0
-    Width = 320
+    Width = 155
     Align = alClient
+    BevelOuter = bvNone
+    Caption = 'Loading...'
+    ClientHeight = 311
+    ClientWidth = 155
+    PopupMenu = popMenu
+    TabOrder = 0
     OnMouseDown = imgPropMouseDown
     OnMouseMove = imgPropMouseMove
     OnMouseUp = imgPropMouseUp
-    PopupMenu = popMenu
+    object imgProp: TImage
+      Left = 0
+      Height = 16
+      Top = 0
+      Width = 40
+      OnMouseDown = imgPropMouseDown
+      OnMouseMove = imgPropMouseMove
+      OnMouseUp = imgPropMouseUp
+      PopupMenu = popMenu
+    end
   end
   object popMenu: TPopupMenu[1]
-    left = 256
-    top = 48
+    left = 24
+    top = 40
     object MenuItem1: TMenuItem
       Action = acOptions
     end
@@ -39,8 +58,8 @@ inherited frmShowPropForm: TfrmShowPropForm
     end
   end
   object acProp: TActionList[2]
-    left = 248
-    top = 128
+    left = 16
+    top = 120
     object acOptions: TAction
       Caption = 'Options'
       OnExecute = acOptionsExecute
