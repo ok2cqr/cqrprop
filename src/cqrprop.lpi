@@ -76,6 +76,7 @@
         <Filename Value="dUtils.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="dmUtils"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit6>
     </Units>
