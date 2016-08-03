@@ -5,7 +5,7 @@ unit dUtils;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, LazUTF8;
+  Classes, SysUtils, FileUtil, LazUTF8, LazFileUtils;
 
 
 type
@@ -15,8 +15,10 @@ type
   TdmUtils = class(TDataModule)
   private
     function  GetProxyEnvValue(const ProxyType : TProxyType) : String;
+    function  FindLib(const Path,LibName : String) : String;
   public
     function  GetAppConfigFileName : String;
+    function  GetSSLLib(LibName : String) : String;
 
     procedure GetProxyParams(const ProxyType : TProxyType; var ProxyHost : String; var ProxyPort : Integer; var ProxyUser, ProxyPass : String);
   end;
@@ -93,6 +95,48 @@ begin
     end;
     ProxyHost := copy(ServerPort, 1, Pos(':', ServerPort)-1)
   end
+end;
+
+function TdmUtils.FindLib(const Path,LibName : String) : String;
+var
+  res       : Byte;
+  SearchRec : TSearchRec;
+begin
+  Result := '';
+  res := FindFirst(Path + LibName, faAnyFile, SearchRec);
+  try
+    while Res = 0 do
+    begin
+      if FileExistsUTF8(Path + SearchRec.Name) then
+      begin
+        Result := (Path + SearchRec.Name);
+        Break
+      end;
+      Res := FindNext(SearchRec)
+    end
+  finally
+    FindClose(SearchRec)
+  end
+end;
+
+
+function TdmUtils.GetSSLLib(LibName : String) : String;
+var
+  lib : String;
+begin
+  lib :=  FindLib('/usr/lib64/',LibName+'.so*');
+  if (lib = '') then
+    lib := FindLib('/lib64/',LibName+'.so*');
+  if (lib='') then
+    lib := FindLib('/usr/lib/x86_64-linux-gnu/',LibName+'.so*');
+  if (lib='') then
+    lib := FindLib('/usr/lib/i386-linux-gnu/',LibName+'.so*');
+  if (lib = '') then
+    lib :=  FindLib('/usr/lib/',LibName+'.so*');
+  if (lib = '') then
+    lib := FindLib('/lib/',LibName+'.so*');
+
+  Result := Lib
 end;
 
 end.
