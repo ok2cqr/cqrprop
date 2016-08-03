@@ -52,6 +52,8 @@ implementation
 
 {$R *.lfm}
 
+uses fAbout;
+
 procedure TfrmShowPropForm.acOptionsExecute(Sender : TObject);
 begin
   //
@@ -59,7 +61,12 @@ end;
 
 procedure TfrmShowPropForm.acAboutExecute(Sender : TObject);
 begin
-  //
+  frmAbout := TfrmAbout.Create(frmShowPropForm);
+  try
+    frmAbout.ShowModal
+  finally
+    FreeAndNil(frmAbout)
+  end
 end;
 
 procedure TfrmShowPropForm.acCloseExecute(Sender : TObject);
