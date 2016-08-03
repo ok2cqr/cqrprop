@@ -52,11 +52,16 @@ implementation
 
 {$R *.lfm}
 
-uses fAbout;
+uses fAbout, fOptions;
 
 procedure TfrmShowPropForm.acOptionsExecute(Sender : TObject);
 begin
-  //
+  frmOptions := TfrmOptions.Create(frmShowPropForm);
+  try
+    frmOptions.ShowModal
+  finally
+    FreeAndNil(frmOptions)
+  end
 end;
 
 procedure TfrmShowPropForm.acAboutExecute(Sender : TObject);

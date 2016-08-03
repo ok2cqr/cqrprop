@@ -1,0 +1,99 @@
+inherited frmOptions: TfrmOptions
+  Left = 678
+  Height = 230
+  Top = 390
+  Width = 525
+  BorderStyle = bsDialog
+  Caption = 'Options'
+  ClientHeight = 230
+  ClientWidth = 525
+  Position = poDesktopCenter
+  object GroupBox1: TGroupBox[0]
+    Left = 16
+    Height = 128
+    Top = 8
+    Width = 401
+    ClientHeight = 124
+    ClientWidth = 397
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 16
+      Height = 17
+      Top = 8
+      Width = 246
+      Caption = 'Download propagation image from:'
+      ParentColor = False
+    end
+    object edtDownloadLink: TEdit
+      Left = 16
+      Height = 27
+      Top = 40
+      Width = 352
+      TabOrder = 0
+      Text = 'edtDownloadLink'
+    end
+    object btnOpenWeb: TButton
+      Left = 16
+      Height = 29
+      Top = 80
+      Width = 354
+      AutoSize = True
+      Caption = 'Open http://www.hamqsl.com/solar.html website'
+      OnClick = btnOpenWebClick
+      TabOrder = 1
+    end
+  end
+  object GroupBox2: TGroupBox[1]
+    Left = 16
+    Height = 64
+    Top = 152
+    Width = 401
+    ClientHeight = 60
+    ClientWidth = 397
+    TabOrder = 1
+    object Label2: TLabel
+      Left = 16
+      Height = 17
+      Top = 18
+      Width = 141
+      Caption = 'Refresh image every '
+      ParentColor = False
+    end
+    object edtRefreshTime: TSpinEdit
+      Left = 166
+      Height = 27
+      Top = 13
+      Width = 74
+      MinValue = 2
+      TabOrder = 0
+      Value = 2
+    end
+    object Label3: TLabel
+      Left = 251
+      Height = 17
+      Top = 18
+      Width = 56
+      Caption = 'minutes'
+      ParentColor = False
+    end
+  end
+  object btnOK: TButton[2]
+    Left = 432
+    Height = 29
+    Top = 8
+    Width = 80
+    Caption = '&OK'
+    OnClick = btnOKClick
+    TabOrder = 2
+  end
+  object btnCancel: TButton[3]
+    Left = 432
+    Height = 29
+    Top = 48
+    Width = 80
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 3
+  end
+end

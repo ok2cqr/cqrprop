@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="5">
+    <Units Count="7">
       <Unit0>
         <Filename Value="cqrprop.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -65,6 +65,19 @@
         <ComponentName Value="frmAbout"/>
         <ResourceBaseClass Value="Form"/>
       </Unit4>
+      <Unit5>
+        <Filename Value="fOptions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOptions"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="dUtils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dmUtils"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
