@@ -12,6 +12,7 @@ cqrprop: src/cqrprop.lpi
 
 clean:
 	rm -f -v src/*.o src/*.ppu src/*.bak src/cqrprop src/*.compiled src/*.or src/*.lrs src/*.a src/*.rst src/*.rsj src/*.lrt src/*.lps src/*.res
+	rm -rf src/synapse/backup
 	rm -rf src/backup
 	rm -rf src/lib
 	rm -f -v tools/cqrprop.1.gz
