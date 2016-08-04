@@ -1,0 +1,15 @@
+Source: cqrprop
+Section: hamradio
+Priority: extra
+Maintainer: Debian Hamradio Maintainers <debian-hams@lists.debian.org>
+Uploaders: Petr Hlozek <petr@ok2cqr.com>
+Build-Depends: debhelper (>= 7), lazarus, lcl, fp-utils, fp-units-misc, fp-units-gfx, fp-units-gtk2, fp-units-db, fp-units-math, fp-units-net
+Standards-Version: 3.9.7
+Homepage: http://www.ok2cqr.com
+
+Package: cqrprop
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libssl-dev
+Description: Shows propagation data provided by Paul, N0NBH
+ Shows propagation data provided by Paul, N0NBH on the Linux desktop. The
+ source page of the propagation images is http://www.hamqsl.com/solar.html
