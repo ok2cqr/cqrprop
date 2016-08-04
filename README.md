@@ -7,9 +7,11 @@ How to install CQRPROP?
 
 Ubuntu 14.04 and 16.04 users can use my PPA on Launchpad:
 
-sudo add-apt-repository ppa:ok2cqr/cqrpropsudo apt-get update
+```
+sudo add-apt-repository ppa:ok2cqr/cqrprop
+sudo apt-get update
 sudo apt-get install cqrprop
-
+```
 
 Screenshots:
 ------------
