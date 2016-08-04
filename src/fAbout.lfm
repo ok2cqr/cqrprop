@@ -1,4 +1,4 @@
-object frmAbout: TfrmAbout
+inherited frmAbout: TfrmAbout
   Left = 798
   Height = 201
   Top = 377
@@ -8,8 +8,7 @@ object frmAbout: TfrmAbout
   ClientHeight = 201
   ClientWidth = 423
   Position = poDesktopCenter
-  LCLVersion = '1.6.0.4'
-  object Image1: TImage
+  object Image1: TImage[0]
     Left = 8
     Height = 130
     Top = 8
@@ -1455,7 +1454,7 @@ object frmAbout: TfrmAbout
       0000000049454E44AE426082
     }
   end
-  object Label1: TLabel
+  object Label1: TLabel[1]
     Left = 160
     Height = 22
     Top = 8
@@ -1466,7 +1465,7 @@ object frmAbout: TfrmAbout
     ParentColor = False
     ParentFont = False
   end
-  object lblVersion: TLabel
+  object lblVersion: TLabel[2]
     Left = 264
     Height = 17
     Top = 13
@@ -1474,7 +1473,7 @@ object frmAbout: TfrmAbout
     Caption = 'lblVersion'
     ParentColor = False
   end
-  object Label2: TLabel
+  object Label2: TLabel[3]
     Left = 160
     Height = 51
     Top = 87
@@ -1482,7 +1481,7 @@ object frmAbout: TfrmAbout
     Caption = 'Shows propagation data provided by'#10'Paul, N0NBH from his website'#10'http://www.hamqsl.com/solar.html'
     ParentColor = False
   end
-  object btnOK: TButton
+  object btnOK: TButton[4]
     Left = 184
     Height = 25
     Top = 168
@@ -1493,18 +1492,30 @@ object frmAbout: TfrmAbout
     ModalResult = 1
     TabOrder = 0
   end
-  object Bevel1: TBevel
+  object Bevel1: TBevel[5]
     Left = 8
     Height = 3
     Top = 152
     Width = 404
   end
-  object Label3: TLabel
+  object Label3: TLabel[6]
     Left = 160
     Height = 34
     Top = 41
     Width = 165
     Caption = '(c) Petr Hlozek, OK2CQR'#10'http://www.ok2cqr.com'
     ParentColor = False
+  end
+  object lblBuildDate: TLabel[7]
+    Left = 335
+    Height = 17
+    Top = 19
+    Width = 77
+    AutoSize = False
+    Caption = 'lblBuildDate'
+    Font.Height = -9
+    Font.Name = 'Sans'
+    ParentColor = False
+    ParentFont = False
   end
 end

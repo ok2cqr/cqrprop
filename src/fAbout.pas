@@ -19,6 +19,7 @@ type
     Label1 : TLabel;
     Label2 : TLabel;
     Label3 : TLabel;
+    lblBuildDate : TLabel;
     lblVersion : TLabel;
     procedure FormShow(Sender: TObject);
   private
@@ -39,7 +40,8 @@ uses uVersion;
 procedure TfrmAbout.FormShow(Sender: TObject);
 begin
   inherited;
-  lblVersion.Caption := cVERSION
+  lblVersion.Caption   := cVERSION;
+  lblBuildDate.Caption := cBUILD_DATE
 end;
 
 end.
