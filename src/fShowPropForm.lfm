@@ -7,7 +7,7 @@ inherited frmShowPropForm: TfrmShowPropForm
   Caption = 'frmShowPropForm'
   ClientHeight = 311
   ClientWidth = 155
-  OnCreate = FormCreate
+  OnClose = FormClose
   OnShow = FormShow
   object pnlInfo: TPanel[0]
     Left = 0

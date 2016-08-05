@@ -215,7 +215,8 @@ end;
 procedure TfrmShowPropForm.imgPropMouseUp(Sender : TObject;
   Button : TMouseButton; Shift : TShiftState; X, Y : Integer);
 begin
-  FormMoving := False
+  FormMoving := False;
+  SaveWindowPos
 end;
 
 procedure TfrmShowPropForm.tmrImageDownloadTimer(Sender : TObject);
