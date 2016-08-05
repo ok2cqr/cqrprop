@@ -160,8 +160,6 @@ procedure TfrmShowPropForm.acRefreshExecute(Sender : TObject);
 var
   ImageDownloadThread : TImageDownloadThread;
 begin
-  imgProp.Visible := False;
-
   ImageDownloadThread := TImageDownloadThread.Create(True);
   ImageDownloadThread.FreeOnTerminate := True;
   ImageDownloadThread.Start
