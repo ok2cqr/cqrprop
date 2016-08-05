@@ -1,0 +1,54 @@
+#!/bin/bash
+ 
+VERSION=0.0.2
+# cqrprop version
+
+FINAL=/home/ok2cqr/projects/final_cqrprop/
+#whre would you like to store final build files
+
+#****************************************
+CTMP=`mktemp -d /tmp/tmp.XXXXXX`
+platform=`uname -m`
+REL=/tmp/cqrprop-$VERSION
+case $platform in
+"x86_64")
+	ARCH=`echo "amd64"`
+	;;
+*)
+	ARCH=`echo "i386"`
+	;;
+esac
+echo cqrprop_"$VERSION"_$ARCH.tar.gz
+
+
+cd /home/ok2cqr/projects/cqrprop
+make clean
+
+mkdir $CTMP/cqrprop-$VERSION -p
+mkdir $FINAL -p
+cd $CTMP
+mkdir cqrprop-$VERSION
+cp -r /home/ok2cqr/projects/cqrprop/* cqrprop-$VERSION
+
+tar -cvzf cqrprop_$VERSION.orig.tar.gz --exclude='debian' --exclude='.git' cqrprop-$VERSION
+cd cqrprop-$VERSION
+debuild -i -I -S
+dpkg-buildpackage -rfakeroot -i -I
+make clean
+cd ..
+tar -cvzf cqrprop_$VERSION.deb.src.tar.gz cqrprop*.orig.tar.gz cqrprop*.debian.tar.xz cqrprop*.changes cqrprop*.dsc
+
+pwd
+echo $FINAL
+ls -lh cqrprop*.deb
+ls -lh cqrprop*.deb.src.tar.gz
+cp cqrprop*.deb $FINAL
+cp cqrprop*.deb.src.tar.gz $FINAL
+
+cd cqrprop-$VERSION
+make
+make DESTDIR=$REL install
+cd /tmp
+tar -cvzf cqrprop_"$VERSION"_$ARCH.tar.gz cqrprop-$VERSION
+cp cqrprop_"$VERSION"_$ARCH.tar.gz $FINAL
+
