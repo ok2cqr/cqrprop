@@ -16,16 +16,13 @@ type
 
   TfrmCommon = class(TForm)
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
-    iniLocal : TIniFile;
-
+    function GetLocalConfigFile : String;
+  public
     procedure SaveWindowPos;
     procedure LoadWindowPos;
 
-    function GetLocalConfigFile : String;
-  public
     property ConfigFile : String read GetLocalConfigFile;
   end; 
 
@@ -38,14 +35,7 @@ implementation
 
 procedure TfrmCommon.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  SaveWindowPos;
-  iniLocal.UpdateFile;
-  FreeAndNil(iniLocal)
-end;
-
-procedure TfrmCommon.FormCreate(Sender: TObject);
-begin
-  iniLocal := TIniFile.Create(GetLocalConfigFile)
+  SaveWindowPos
 end;
 
 procedure TfrmCommon.FormShow(Sender: TObject);
@@ -82,29 +72,44 @@ begin
 end;
 
 procedure TfrmCommon.SaveWindowPos;
+var
+  iniLocal : TIniFile;
 begin
-  if (WindowState = wsMaximized) then
-     iniLocal.WriteBool(name,'Max',True)
-  else begin
-    iniLocal.WriteInteger(name,'Height',Height);
-    iniLocal.WriteInteger(name,'Width',Width);
-    iniLocal.WriteInteger(name,'Top',Top);
-    iniLocal.WriteInteger(name,'Left',Left)
+  iniLocal := TIniFile.Create(GetLocalConfigFile);
+  try
+    if (WindowState = wsMaximized) then
+       iniLocal.WriteBool(name,'Max',True)
+    else begin
+      iniLocal.WriteInteger(name,'Height',Height);
+      iniLocal.WriteInteger(name,'Width',Width);
+      iniLocal.WriteInteger(name,'Top',Top);
+      iniLocal.WriteInteger(name,'Left',Left)
+    end
+  finally
+    iniLocal.UpdateFile;
+    FreeAndNil(iniLocal)
   end
 end;
 
 procedure TfrmCommon.LoadWindowPos;
+var
+  iniLocal : TIniFile;
 begin
-  if iniLocal.ReadBool(name,'Max',False) then
-    WindowState := wsMaximized
-  else begin
-    if (BorderStyle <> bsDialog) then
-    begin
-      Height := iniLocal.ReadInteger(name,'Height',Height);
-      Width  := iniLocal.ReadInteger(name,'Width',Width)
-    end;
-    Top  := iniLocal.ReadInteger(name,'Top',Top);
-    Left := iniLocal.ReadInteger(name,'Left',Left)
+  iniLocal := TIniFile.Create(GetLocalConfigFile);
+  try
+    if iniLocal.ReadBool(name,'Max',False) then
+      WindowState := wsMaximized
+    else begin
+      if (BorderStyle <> bsDialog) then
+      begin
+        Height := iniLocal.ReadInteger(name,'Height',Height);
+        Width  := iniLocal.ReadInteger(name,'Width',Width)
+      end;
+      Top  := iniLocal.ReadInteger(name,'Top',Top);
+      Left := iniLocal.ReadInteger(name,'Left',Left)
+    end
+  finally
+    FreeAndNil(iniLocal)
   end
 end;
 
