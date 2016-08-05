@@ -1,3 +1,10 @@
+cqrprop (0.0.2-1) unstable; urgency=low
+
+  * the old image is diplayed when new is downloaded
+  * window position is saved after the end of move
+
+ -- Petr Hlozek <petr@ok2cqr.com>  Fri, 5 Aug 2016 17:16:00 +0100
+
 cqrprop (0.0.1-1) unstable; urgency=low
 
   * first release
