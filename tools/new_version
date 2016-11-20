@@ -3,7 +3,7 @@
 VERSION=0.0.2
 # cqrprop version
 
-FINAL=/home/ok2cqr/projects/final_cqrprop/
+FINAL=$HOME/projects/final_cqrprop/
 #whre would you like to store final build files
 
 #****************************************

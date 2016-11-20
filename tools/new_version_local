@@ -3,7 +3,7 @@
 VERSION=0.0.2
 # cqrprop version
 
-FINAL=/home/ok2cqr/projects/final_cqrprop/
+FINAL=$HOME/projects/final_cqrprop/
 #whre would you like to store final build files
 
 #****************************************
@@ -21,14 +21,14 @@ esac
 echo cqrprop_"$VERSION"_$ARCH.tar.gz
 
 
-cd /home/ok2cqr/projects/cqrprop
+cd $HOME/projects/cqrprop
 make clean
 
 mkdir $CTMP/cqrprop-$VERSION -p
 mkdir $FINAL -p
 cd $CTMP
 mkdir cqrprop-$VERSION
-cp -r /home/ok2cqr/projects/cqrprop/* cqrprop-$VERSION
+cp -r $HOME/projects/cqrprop/* cqrprop-$VERSION
 
 tar -cvzf cqrprop_$VERSION.orig.tar.gz --exclude='debian' --exclude='.git' cqrprop-$VERSION
 cd cqrprop-$VERSION
