@@ -1,3 +1,9 @@
+cqrprop (0.0.3-1) unstable; urgency=low
+
+  * configurable delay before first image download added
+
+ -- Petr Hlozek <petr@ok2cqr.com>  Sun, 20 Nov 2016 16:37:00 +0100
+
 cqrprop (0.0.2-1) unstable; urgency=low
 
   * the old image is diplayed when new is downloaded
