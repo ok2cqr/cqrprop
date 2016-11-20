@@ -84,4 +84,10 @@ inherited frmShowPropForm: TfrmShowPropForm
     left = 64
     top = 192
   end
+  object tmrWait: TTimer[4]
+    Enabled = False
+    OnTimer = tmrWaitTimer
+    left = 64
+    top = 256
+  end
 end

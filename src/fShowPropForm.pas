@@ -27,6 +27,7 @@ type
     MenuItem7 : TMenuItem;
     pnlInfo : TPanel;
     popMenu : TPopupMenu;
+    tmrWait : TTimer;
     tmrImageDownload : TTimer;
     procedure acAboutExecute(Sender : TObject);
     procedure acCloseExecute(Sender : TObject);
@@ -41,11 +42,13 @@ type
     procedure imgPropMouseUp(Sender : TObject; Button : TMouseButton;
       Shift : TShiftState; X, Y : Integer);
     procedure tmrImageDownloadTimer(Sender : TObject);
+    procedure tmrWaitTimer(Sender : TObject);
   private
     OldX, OldY : Integer;
     FormMoving : Boolean;
 
     function  GetTimerInterval : Integer;
+    function  GetWaitInterval : Integer;
   public
     ImageFileName    : String;
     ImageFile        : TFileStream;
@@ -174,9 +177,9 @@ begin
   ShowInTaskBar := stNever;
   ImageFile     := nil;
 
-  tmrImageDownload.Interval := GetTimerInterval;
-  tmrImageDownload.Enabled  := True;
-  acRefresh.Execute
+  pnlInfo.Caption  := 'Waiting...';
+  tmrWait.Interval := GetWaitInterval;
+  tmrWait.Enabled  := True
 end;
 
 procedure TfrmShowPropForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -222,6 +225,15 @@ begin
   acRefresh.Execute
 end;
 
+procedure TfrmShowPropForm.tmrWaitTimer(Sender : TObject);
+begin
+  tmrWait.Enabled := False;
+  pnlInfo.Caption := '';
+  tmrImageDownload.Interval := GetTimerInterval;
+  tmrImageDownload.Enabled  := True;
+  acRefresh.Execute
+end;
+
 function TfrmShowPropForm.GetTimerInterval : Integer;
 var
   ini : TIniFile;
@@ -229,6 +241,18 @@ begin
   ini := TIniFile.Create(dmUtils.GetAppConfigFileName);
   try
     Result := ini.ReadInteger('App', 'RefreshTime', 5) * 1000 * 60//in miliseconds
+  finally
+    FreeAndNil(ini)
+  end
+end;
+
+function TfrmShowPropForm.GetWaitInterval : Integer;
+var
+  ini : TIniFile;
+begin
+  ini := TIniFile.Create(dmUtils.GetAppConfigFileName);
+  try
+    Result := ini.ReadInteger('App', 'WaitTime', 2) * 1000 //in miliseconds
   finally
     FreeAndNil(ini)
   end
