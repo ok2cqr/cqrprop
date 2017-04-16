@@ -1,32 +1,32 @@
 inherited frmOptions: TfrmOptions
   Left = 678
-  Height = 230
+  Height = 292
   Top = 390
   Width = 597
   BorderStyle = bsDialog
   Caption = 'Options'
-  ClientHeight = 230
+  ClientHeight = 292
   ClientWidth = 597
   Position = poDesktopCenter
   object GroupBox1: TGroupBox[0]
     Left = 16
-    Height = 128
+    Height = 136
     Top = 8
     Width = 456
-    ClientHeight = 124
-    ClientWidth = 452
+    ClientHeight = 134
+    ClientWidth = 454
     TabOrder = 0
     object Label1: TLabel
       Left = 16
-      Height = 17
+      Height = 20
       Top = 8
-      Width = 246
+      Width = 223
       Caption = 'Download propagation image from:'
       ParentColor = False
     end
     object edtDownloadLink: TEdit
       Left = 16
-      Height = 27
+      Height = 37
       Top = 40
       Width = 352
       TabOrder = 0
@@ -34,9 +34,9 @@ inherited frmOptions: TfrmOptions
     end
     object btnOpenWeb: TButton
       Left = 16
-      Height = 29
-      Top = 80
-      Width = 354
+      Height = 36
+      Top = 88
+      Width = 332
       AutoSize = True
       Caption = 'Open http://www.hamqsl.com/solar.html website'
       OnClick = btnOpenWebClick
@@ -45,59 +45,59 @@ inherited frmOptions: TfrmOptions
   end
   object GroupBox2: TGroupBox[1]
     Left = 16
-    Height = 75
-    Top = 139
+    Height = 128
+    Top = 152
     Width = 456
-    ClientHeight = 71
-    ClientWidth = 452
+    ClientHeight = 126
+    ClientWidth = 454
     TabOrder = 1
     object Label2: TLabel
       Left = 16
-      Height = 17
-      Top = 6
-      Width = 141
+      Height = 20
+      Top = 32
+      Width = 135
       Caption = 'Refresh image every '
       ParentColor = False
     end
     object edtRefreshTime: TSpinEdit
-      Left = 166
-      Height = 27
-      Top = 2
+      Left = 160
+      Height = 37
+      Top = 24
       Width = 74
       MinValue = 2
       TabOrder = 0
       Value = 2
     end
     object Label3: TLabel
-      Left = 256
-      Height = 17
-      Top = 6
-      Width = 56
+      Left = 248
+      Height = 20
+      Top = 32
+      Width = 51
       Caption = 'minutes'
       ParentColor = False
     end
     object Label4: TLabel
       Left = 16
-      Height = 17
-      Top = 45
-      Width = 32
+      Height = 20
+      Top = 80
+      Width = 29
       Caption = 'Wait'
       ParentColor = False
     end
     object edtWaitTime: TSpinEdit
       Left = 64
-      Height = 27
-      Top = 40
+      Height = 37
+      Top = 72
       Width = 74
       MinValue = 2
       TabOrder = 1
       Value = 2
     end
     object Label5: TLabel
-      Left = 152
-      Height = 17
-      Top = 45
-      Width = 283
+      Left = 149
+      Height = 20
+      Top = 80
+      Width = 265
       Caption = 'seconds  before the first image download'
       ParentColor = False
     end
