@@ -1,0 +1,20 @@
+Legend:
+  # info
+  + new feature
+  - bugfix
+--------------------
+
+0.0.4 (2017-12-31)
+  + HiDPI support added
+  + openssl-1.1.0 support added
+
+0.0.3 (2016-11-20)
+  + configurable delay before first image download added
+
+0.0.2 (2016-08-05)
+  + the old image is diplayed when new is downloaded
+  + window position is saved after the end of move
+
+0.0.1 (2016-08-04)
+  + initial release
+
