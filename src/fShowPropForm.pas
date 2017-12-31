@@ -99,7 +99,7 @@ begin
   end
 end;
 
-function TImageDownloadThread.DownloadToTempFile(const Url,FileName : String) : Boolean;
+function TImageDownloadThread.DownloadToTempFile(const Url, FileName : String) : Boolean;
 var
   Http : THTTPSend;
   Mem  : TFileStream;
@@ -108,14 +108,17 @@ var
   ProxyPort : Integer = 0;
   ProxyUser : String;
   ProxyPass : String;
+  ProxyType : TProxyType;
 begin
   Http := THTTPSend.Create;
-  Mem  := TFileStream.Create(FileName,fmCreate);
+  Mem  := TFileStream.Create(FileName, fmCreate);
   try
     if (Pos('https://', Url) = 1) then
-      dmUtils.GetProxyParams(ptHTTPS, ProxyHost, ProxyPort, ProxyUser, ProxyPass)
+       ProxyType := ptHTTPS
     else
-      dmUtils.GetProxyParams(ptHTTP, ProxyHost, ProxyPort, ProxyUser, ProxyPass);
+      ProxyType := ptHTTP;
+
+    dmUtils.GetProxyParams(ProxyType, ProxyHost, ProxyPort, ProxyUser, ProxyPass);
 
     Http.ProxyHost := ProxyHost;
     Http.ProxyPort := IntToStr(ProxyPort);
