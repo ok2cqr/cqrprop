@@ -5,7 +5,7 @@ A small application that shows propagation data from Paul, N0NBH website http://
 How to install CQRPROP?
 ------------------------
 
-Ubuntu 14.04, 16.04, 16.10, 17.04 users can use my PPA on Launchpad:
+Ubuntu 16.04, 17.10 and 18.04 users can use my PPA on Launchpad:
 
 ```
 sudo add-apt-repository ppa:ok2cqr/cqrprop
@@ -18,4 +18,4 @@ Screenshots:
 
 ![Alt text](http://www.ok2cqr.com/linux/images/cqrprop/cqrprop.png "Main window")
 
-![Alt text](http://www.ok2cqr.com/linux/images/cqrprop/cqrprop_options.png "Main window")
+![Alt text](http://www.ok2cqr.com/linux/images/cqrprop/cqrprop_options.png "Options window")
