@@ -174,8 +174,7 @@ end;
 procedure TfrmShowPropForm.FormShow(Sender: TObject);
 begin
   inherited;
-  DLLSSLName  := dmUtils.GetSSLLib('libssl');;
-  DLLUtilName := dmUtils.GetSSLLib('libcrypto');
+
   //this will hide the window from a Cinnamon panel
   ShowInTaskBar := stNever;
   ImageFile     := nil;
