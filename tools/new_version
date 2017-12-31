@@ -1,6 +1,8 @@
 #!/bin/bash
  
-VERSION=0.0.3
+VERSION=`cat ../src/uVersion.pas | grep cVERSION`
+VERSION="$(echo -e "${VERSION}" | sed -e 's/^[[:space:]]*//')"
+VERSION="${VERSION:15:5}"
 # cqrprop version
 
 FINAL=$HOME/projects/final_cqrprop/
