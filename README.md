@@ -18,4 +18,4 @@ Screenshots:
 
 ![Alt text](http://www.ok2cqr.com/linux/images/cqrprop/cqrprop.png "Main window")
 
-![Alt text](http://www.ok2cqr.com/linux/images/cqrprop/cqrprop_options.png "Main window")
+![Alt text](http://www.ok2cqr.com/linux/images/cqrprop/cqrprop_options.png "Options window")
