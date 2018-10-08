@@ -34,7 +34,7 @@ uses fShowPropForm;
 procedure TfrmMainFormHidden.tmrMainTimer(Sender : TObject);
 begin
   tmrMain.Enabled := False;
-  frmShowPropForm.ShowModal
+  frmShowPropForm.Show
 end;
 
 end.
