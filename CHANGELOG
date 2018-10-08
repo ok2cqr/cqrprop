@@ -4,6 +4,9 @@ Legend:
   - bugfix
 --------------------
 
+0.0.5 (2018-10-08)
+  - windows was still on top - fixed
+
 0.0.4 (2017-12-31)
   + HiDPI support added
   + openssl-1.1.0 support added
