@@ -1502,8 +1502,8 @@ inherited frmAbout: TfrmAbout
     Left = 160
     Height = 30
     Top = 41
-    Width = 158
-    Caption = '(c) Petr Hlozek, OK7AN'#10'http://www.ok7an.com'
+    Width = 163
+    Caption = '(c) Petr Hlozek, OK2CQR'#10'http://www.ok2cqr.com'
     ParentColor = False
   end
   object lblBuildDate: TLabel[7]
