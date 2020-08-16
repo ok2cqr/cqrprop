@@ -138,7 +138,8 @@ procedure TfrmShowPropForm.acOptionsExecute(Sender: TObject);
 begin
   frmOptions := TfrmOptions.Create(frmShowPropForm);
   try
-    frmOptions.ShowModal
+    frmOptions.ShowModal;
+    tmrWaitTimer(nil);
   finally
     FreeAndNil(frmOptions)
   end;
