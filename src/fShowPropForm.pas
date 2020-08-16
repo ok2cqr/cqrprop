@@ -13,46 +13,43 @@ type
   { TfrmShowPropForm }
 
   TfrmShowPropForm = class(TfrmCommon)
-    acProp : TActionList;
-    acOptions : TAction;
-    acAbout : TAction;
-    acRefresh : TAction;
-    acClose : TAction;
-    imgProp : TImage;
-    MenuItem1 : TMenuItem;
-    MenuItem2 : TMenuItem;
-    MenuItem3 : TMenuItem;
-    MenuItem5 : TMenuItem;
-    MenuItem6 : TMenuItem;
-    MenuItem7 : TMenuItem;
-    pnlInfo : TPanel;
-    popMenu : TPopupMenu;
-    tmrWait : TTimer;
-    tmrImageDownload : TTimer;
-    procedure acAboutExecute(Sender : TObject);
-    procedure acCloseExecute(Sender : TObject);
-    procedure acOptionsExecute(Sender : TObject);
-    procedure acRefreshExecute(Sender : TObject);
+    acProp: TActionList;
+    acOptions: TAction;
+    acAbout: TAction;
+    acRefresh: TAction;
+    acClose: TAction;
+    imgProp: TImage;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    pnlInfo: TPanel;
+    popMenu: TPopupMenu;
+    tmrWait: TTimer;
+    tmrImageDownload: TTimer;
+    procedure acAboutExecute(Sender: TObject);
+    procedure acCloseExecute(Sender: TObject);
+    procedure acOptionsExecute(Sender: TObject);
+    procedure acRefreshExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure imgPropMouseDown(Sender : TObject; Button : TMouseButton;
-      Shift : TShiftState; X, Y : Integer);
-    procedure imgPropMouseMove(Sender : TObject; Shift : TShiftState; X,
-      Y : Integer);
-    procedure imgPropMouseUp(Sender : TObject; Button : TMouseButton;
-      Shift : TShiftState; X, Y : Integer);
-    procedure tmrImageDownloadTimer(Sender : TObject);
-    procedure tmrWaitTimer(Sender : TObject);
+    procedure imgPropMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+    procedure imgPropMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
+    procedure imgPropMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+    procedure tmrImageDownloadTimer(Sender: TObject);
+    procedure tmrWaitTimer(Sender: TObject);
   private
-    OldX, OldY : Integer;
-    FormMoving : Boolean;
+    OldX, OldY: integer;
+    FormMoving: boolean;
 
-    function  GetTimerInterval : Integer;
-    function  GetWaitInterval : Integer;
+    function GetTimerInterval: integer;
+    function GetWaitInterval: integer;
   public
-    ImageFileName    : String;
-    ImageFile        : TFileStream;
-    OldImageFileName : String;
+    ImageFileName: string;
+    ImageFile: TFileStream;
+    OldImageFileName: string;
 
     procedure SynShowImage;
   end;
@@ -60,13 +57,13 @@ type
 type
   TImageDownloadThread = class(TThread)
   private
-    function  DownloadToTempFile(const Url,FileName : String) : Boolean;
+    function DownloadToTempFile(const Url, FileName: string): boolean;
   protected
     procedure Execute; override;
-end;
+  end;
 
 var
-  frmShowPropForm : TfrmShowPropForm;
+  frmShowPropForm: TfrmShowPropForm;
 
 implementation
 
@@ -76,8 +73,8 @@ uses fAbout, fOptions, dUtils;
 
 procedure TImageDownloadThread.Execute;
 var
-  ini : TIniFile;
-  Url : String;
+  ini: TIniFile;
+  Url: string;
 begin
   ini := TIniFile.Create(dmUtils.GetAppConfigFileName);
   try
@@ -92,29 +89,29 @@ begin
         DeleteFileUTF8(frmShowPropForm.OldImageFileName);
       frmShowPropForm.OldImageFileName := frmShowPropForm.ImageFileName;
 
-      Synchronize(@frmShowPropForm.SynShowImage)
+      Synchronize(@frmShowPropForm.SynShowImage);
     end
   finally
     FreeAndNil(ini)
-  end
+  end;
 end;
 
-function TImageDownloadThread.DownloadToTempFile(const Url, FileName : String) : Boolean;
+function TImageDownloadThread.DownloadToTempFile(const Url, FileName: string): boolean;
 var
-  Http : THTTPSend;
-  Mem  : TFileStream;
+  Http: THTTPSend;
+  Mem: TFileStream;
 
-  ProxyHost : String;
-  ProxyPort : Integer = 0;
-  ProxyUser : String;
-  ProxyPass : String;
-  ProxyType : TProxyType;
+  ProxyHost: string;
+  ProxyPort: integer = 0;
+  ProxyUser: string;
+  ProxyPass: string;
+  ProxyType: TProxyType;
 begin
   Http := THTTPSend.Create;
-  Mem  := TFileStream.Create(FileName, fmCreate);
+  Mem := TFileStream.Create(FileName, fmCreate);
   try
     if (Pos('https://', Url) = 1) then
-       ProxyType := ptHTTPS
+      ProxyType := ptHTTPS
     else
       ProxyType := ptHTTP;
 
@@ -129,46 +126,46 @@ begin
     if Result then
     begin
       Mem.Seek(0, soFromBeginning);
-      Mem.CopyFrom(Http.Document, 0)
+      Mem.CopyFrom(Http.Document, 0);
     end
   finally
     FreeAndNil(Http);
     FreeAndNil(Mem)
-  end
+  end;
 end;
 
-procedure TfrmShowPropForm.acOptionsExecute(Sender : TObject);
+procedure TfrmShowPropForm.acOptionsExecute(Sender: TObject);
 begin
   frmOptions := TfrmOptions.Create(frmShowPropForm);
   try
     frmOptions.ShowModal
   finally
     FreeAndNil(frmOptions)
-  end
+  end;
 end;
 
-procedure TfrmShowPropForm.acAboutExecute(Sender : TObject);
+procedure TfrmShowPropForm.acAboutExecute(Sender: TObject);
 begin
   frmAbout := TfrmAbout.Create(frmShowPropForm);
   try
     frmAbout.ShowModal
   finally
     FreeAndNil(frmAbout)
-  end
+  end;
 end;
 
-procedure TfrmShowPropForm.acCloseExecute(Sender : TObject);
+procedure TfrmShowPropForm.acCloseExecute(Sender: TObject);
 begin
-  Close()
+  Close();
 end;
 
-procedure TfrmShowPropForm.acRefreshExecute(Sender : TObject);
+procedure TfrmShowPropForm.acRefreshExecute(Sender: TObject);
 var
-  ImageDownloadThread : TImageDownloadThread;
+  ImageDownloadThread: TImageDownloadThread;
 begin
   ImageDownloadThread := TImageDownloadThread.Create(True);
   ImageDownloadThread.FreeOnTerminate := True;
-  ImageDownloadThread.Start
+  ImageDownloadThread.Start;
 end;
 
 procedure TfrmShowPropForm.FormShow(Sender: TObject);
@@ -177,11 +174,11 @@ begin
 
   //this will hide the window from a Cinnamon panel
   ShowInTaskBar := stNever;
-  ImageFile     := nil;
+  ImageFile := nil;
 
-  pnlInfo.Caption  := 'Waiting...';
+  pnlInfo.Caption := 'Waiting...';
   tmrWait.Interval := GetWaitInterval;
-  tmrWait.Enabled  := True
+  tmrWait.Enabled := True;
 end;
 
 procedure TfrmShowPropForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -191,73 +188,70 @@ begin
   FreeAndNil(ImageFile);
   if (FileExistsUTF8(ImageFileName)) then
     DeleteFileUTF8(ImageFileName);
-  Application.Terminate
+  Application.Terminate;
 end;
 
-procedure TfrmShowPropForm.imgPropMouseDown(Sender : TObject;
-  Button : TMouseButton; Shift : TShiftState; X, Y : Integer);
+procedure TfrmShowPropForm.imgPropMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
 begin
   if (Button = mbLeft) then
   begin
     FormMoving := True;
     OldX := X;
-    OldY := Y
-  end
+    OldY := Y;
+  end;
 end;
 
-procedure TfrmShowPropForm.imgPropMouseMove(Sender : TObject;
-  Shift : TShiftState; X, Y : Integer);
+procedure TfrmShowPropForm.imgPropMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
 begin
   if FormMoving then
   begin
     Left := Left + (X - OldX);
-    Top  := Top + (Y - OldY)
-  end
+    Top := Top + (Y - OldY);
+  end;
 end;
 
-procedure TfrmShowPropForm.imgPropMouseUp(Sender : TObject;
-  Button : TMouseButton; Shift : TShiftState; X, Y : Integer);
+procedure TfrmShowPropForm.imgPropMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
 begin
   FormMoving := False;
-  SaveWindowPos
+  SaveWindowPos;
 end;
 
-procedure TfrmShowPropForm.tmrImageDownloadTimer(Sender : TObject);
+procedure TfrmShowPropForm.tmrImageDownloadTimer(Sender: TObject);
 begin
-  acRefresh.Execute
+  acRefresh.Execute;
 end;
 
-procedure TfrmShowPropForm.tmrWaitTimer(Sender : TObject);
+procedure TfrmShowPropForm.tmrWaitTimer(Sender: TObject);
 begin
   tmrWait.Enabled := False;
   pnlInfo.Caption := '';
   tmrImageDownload.Interval := GetTimerInterval;
-  tmrImageDownload.Enabled  := True;
-  acRefresh.Execute
+  tmrImageDownload.Enabled := True;
+  acRefresh.Execute;
 end;
 
-function TfrmShowPropForm.GetTimerInterval : Integer;
+function TfrmShowPropForm.GetTimerInterval: integer;
 var
-  ini : TIniFile;
+  ini: TIniFile;
 begin
   ini := TIniFile.Create(dmUtils.GetAppConfigFileName);
   try
     Result := ini.ReadInteger('App', 'RefreshTime', 5) * 1000 * 60//in miliseconds
   finally
     FreeAndNil(ini)
-  end
+  end;
 end;
 
-function TfrmShowPropForm.GetWaitInterval : Integer;
+function TfrmShowPropForm.GetWaitInterval: integer;
 var
-  ini : TIniFile;
+  ini: TIniFile;
 begin
   ini := TIniFile.Create(dmUtils.GetAppConfigFileName);
   try
     Result := ini.ReadInteger('App', 'WaitTime', 2) * 1000 //in miliseconds
   finally
     FreeAndNil(ini)
-  end
+  end;
 end;
 
 procedure TfrmShowPropForm.SynShowImage;
@@ -265,20 +259,26 @@ begin
   if Assigned(ImageFile) then
     FreeAndNil(ImageFile);
 
-  ImageFile := TFileStream.Create(ImageFileName,fmOpenRead);
+  ImageFile := TFileStream.Create(ImageFileName, fmOpenRead);
 
   imgProp.Picture.LoadFromStream(ImageFile);
 
   imgProp.Visible := True;
 
   pnlInfo.Height := imgProp.Height;
-  pnlInfo.Width  := imgProp.Width;
+  pnlInfo.Width := imgProp.Width;
 
   Height := imgProp.Height;
-  Width  := imgProp.Width
+  Width := imgProp.Width;
 end;
 
 
 
 end.
+
+
+
+
+
+
 

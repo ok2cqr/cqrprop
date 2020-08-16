@@ -2,14 +2,17 @@ program cqrprop;
 
 {$mode objfpc}{$H+}
 
-uses
-  {$IFDEF UNIX}
-  cthreads,
-  {$ENDIF}
+uses {$IFDEF UNIX}
+  cthreads, {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, fMainFormHidden, fCommon, fShowPropForm, fAbout, fOptions, dUtils,
-  uVersion
-  { you can add units after this };
+  Forms,
+  fMainFormHidden,
+  fCommon,
+  fShowPropForm,
+  fAbout,
+  fOptions,
+  dUtils,
+  uVersion { you can add units after this };
 
 {$R *.res}
 
@@ -23,4 +26,3 @@ begin
   Application.ShowMainForm := False;
   Application.Run;
 end.
-

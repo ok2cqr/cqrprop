@@ -6,5 +6,5 @@ object frmCommon: TfrmCommon
   Caption = 'frmCommon'
   OnClose = FormClose
   OnShow = FormShow
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.6.0'
 end

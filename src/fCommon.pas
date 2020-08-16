@@ -18,13 +18,13 @@ type
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
-    function GetLocalConfigFile : String;
+    function GetLocalConfigFile: string;
   public
     procedure SaveWindowPos;
     procedure LoadWindowPos;
 
-    property ConfigFile : String read GetLocalConfigFile;
-  end; 
+    property ConfigFile: string read GetLocalConfigFile;
+  end;
 
 var
   frmCommon: TfrmCommon;
@@ -35,82 +35,82 @@ implementation
 
 procedure TfrmCommon.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  SaveWindowPos
+  SaveWindowPos;
 end;
 
 procedure TfrmCommon.FormShow(Sender: TObject);
 begin
-  LoadWindowPos
+  LoadWindowPos;
 end;
 
-function TfrmCommon.GetLocalConfigFile : String;
+function TfrmCommon.GetLocalConfigFile: string;
 
-   procedure CreateEmptyFile(emFile : String);
-   var
-     f : TextFile;
-   begin
-     AssignFile(f,emFile);
-     Rewrite(f);
-     WriteLn(f,'');
-     CloseFile(f)
-   end;
+  procedure CreateEmptyFile(emFile: string);
+  var
+    f: TextFile;
+  begin
+    AssignFile(f, emFile);
+    Rewrite(f);
+    WriteLn(f, '');
+    CloseFile(f);
+  end;
 
 var
-  dir : String;
+  dir: string;
 begin
-  dir := ExtractFilePath(GetAppConfigFile(False))+APP_NAME+DirectorySeparator;
+  dir := ExtractFilePath(GetAppConfigFile(False)) + APP_NAME + DirectorySeparator;
   if DirectoryExistsUTF8(dir) then
   begin
-    if (not FileExistsUTF8(dir+APP_NAME+'.local.cfg')) then
-      CreateEmptyFile(dir+APP_NAME+'.local.cfg')
+    if (not FileExistsUTF8(dir + APP_NAME + '.local.cfg')) then
+      CreateEmptyFile(dir + APP_NAME + '.local.cfg');
   end
   else begin
     CreateDir(dir);
-    CreateEmptyFile(dir+APP_NAME+'.local.cfg')
+    CreateEmptyFile(dir + APP_NAME + '.local.cfg');
   end;
-  Result := dir+APP_NAME+'.local.cfg'
+  Result := dir + APP_NAME + '.local.cfg';
 end;
 
 procedure TfrmCommon.SaveWindowPos;
 var
-  iniLocal : TIniFile;
+  iniLocal: TIniFile;
 begin
   iniLocal := TIniFile.Create(GetLocalConfigFile);
   try
     if (WindowState = wsMaximized) then
-       iniLocal.WriteBool(name,'Max',True)
+      iniLocal.WriteBool(Name, 'Max', True)
     else begin
-      iniLocal.WriteInteger(name,'Height',Height);
-      iniLocal.WriteInteger(name,'Width',Width);
-      iniLocal.WriteInteger(name,'Top',Top);
-      iniLocal.WriteInteger(name,'Left',Left)
+      iniLocal.WriteInteger(Name, 'Height', Height);
+      iniLocal.WriteInteger(Name, 'Width', Width);
+      iniLocal.WriteInteger(Name, 'Top', Top);
+      iniLocal.WriteInteger(Name, 'Left', Left);
     end
   finally
     iniLocal.UpdateFile;
     FreeAndNil(iniLocal)
-  end
+  end;
 end;
 
 procedure TfrmCommon.LoadWindowPos;
 var
-  iniLocal : TIniFile;
+  iniLocal: TIniFile;
 begin
   iniLocal := TIniFile.Create(GetLocalConfigFile);
   try
-    if iniLocal.ReadBool(name,'Max',False) then
+    if iniLocal.ReadBool(Name, 'Max', False) then
       WindowState := wsMaximized
     else begin
       if (BorderStyle <> bsDialog) then
       begin
-        Height := iniLocal.ReadInteger(name,'Height',Height);
-        Width  := iniLocal.ReadInteger(name,'Width',Width)
+        Height := iniLocal.ReadInteger(Name, 'Height', Height);
+        Width := iniLocal.ReadInteger(Name, 'Width', Width);
       end;
-      Top  := iniLocal.ReadInteger(name,'Top',Top);
-      Left := iniLocal.ReadInteger(name,'Left',Left)
+      Top := iniLocal.ReadInteger(Name, 'Top', Top);
+      Left := iniLocal.ReadInteger(Name, 'Left', Left);
     end
   finally
     FreeAndNil(iniLocal)
-  end
+  end;
 end;
 
 

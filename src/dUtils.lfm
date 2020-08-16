@@ -4,4 +4,5 @@ object dmUtils: TdmUtils
   HorizontalOffset = 1165
   VerticalOffset = 516
   Width = 150
+  PPI = 96
 end

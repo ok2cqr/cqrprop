@@ -4,7 +4,7 @@ object frmMainFormHidden: TfrmMainFormHidden
   Top = 331
   Width = 320
   Caption = 'frmMainFormHidden'
-  LCLVersion = '1.8.2.0'
+  LCLVersion = '2.0.6.0'
   object tmrMain: TTimer
     Interval = 500
     OnTimer = tmrMainTimer

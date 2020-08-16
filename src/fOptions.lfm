@@ -18,15 +18,15 @@ inherited frmOptions: TfrmOptions
     TabOrder = 0
     object Label1: TLabel
       Left = 16
-      Height = 20
+      Height = 15
       Top = 8
-      Width = 223
+      Width = 239
       Caption = 'Download propagation image from:'
       ParentColor = False
     end
     object edtDownloadLink: TEdit
       Left = 16
-      Height = 37
+      Height = 33
       Top = 40
       Width = 352
       TabOrder = 0
@@ -34,9 +34,9 @@ inherited frmOptions: TfrmOptions
     end
     object btnOpenWeb: TButton
       Left = 16
-      Height = 36
+      Height = 33
       Top = 88
-      Width = 332
+      Width = 351
       AutoSize = True
       Caption = 'Open http://www.hamqsl.com/solar.html website'
       OnClick = btnOpenWebClick
@@ -53,15 +53,15 @@ inherited frmOptions: TfrmOptions
     TabOrder = 1
     object Label2: TLabel
       Left = 16
-      Height = 20
+      Height = 15
       Top = 32
-      Width = 135
+      Width = 138
       Caption = 'Refresh image every '
       ParentColor = False
     end
     object edtRefreshTime: TSpinEdit
       Left = 160
-      Height = 37
+      Height = 33
       Top = 24
       Width = 74
       MinValue = 2
@@ -70,23 +70,23 @@ inherited frmOptions: TfrmOptions
     end
     object Label3: TLabel
       Left = 248
-      Height = 20
+      Height = 15
       Top = 32
-      Width = 51
+      Width = 54
       Caption = 'minutes'
       ParentColor = False
     end
     object Label4: TLabel
       Left = 16
-      Height = 20
+      Height = 15
       Top = 80
-      Width = 29
+      Width = 31
       Caption = 'Wait'
       ParentColor = False
     end
     object edtWaitTime: TSpinEdit
       Left = 64
-      Height = 37
+      Height = 33
       Top = 72
       Width = 74
       MinValue = 2
@@ -95,9 +95,9 @@ inherited frmOptions: TfrmOptions
     end
     object Label5: TLabel
       Left = 149
-      Height = 20
+      Height = 15
       Top = 80
-      Width = 265
+      Width = 276
       Caption = 'seconds  before the first image download'
       ParentColor = False
     end

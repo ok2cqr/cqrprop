@@ -1456,7 +1456,7 @@ inherited frmAbout: TfrmAbout
   end
   object Label1: TLabel[1]
     Left = 160
-    Height = 23
+    Height = 21
     Top = 8
     Width = 91
     Caption = 'CQRPROP'
@@ -1467,7 +1467,7 @@ inherited frmAbout: TfrmAbout
   end
   object lblVersion: TLabel[2]
     Left = 264
-    Height = 17
+    Height = 15
     Top = 13
     Width = 68
     Caption = 'lblVersion'
@@ -1475,9 +1475,9 @@ inherited frmAbout: TfrmAbout
   end
   object Label2: TLabel[3]
     Left = 160
-    Height = 51
+    Height = 45
     Top = 87
-    Width = 247
+    Width = 244
     Caption = 'Shows propagation data provided by'#10'Paul, N0NBH from his website'#10'http://www.hamqsl.com/solar.html'
     ParentColor = False
   end
@@ -1500,9 +1500,9 @@ inherited frmAbout: TfrmAbout
   end
   object Label3: TLabel[6]
     Left = 160
-    Height = 34
+    Height = 30
     Top = 41
-    Width = 156
+    Width = 158
     Caption = '(c) Petr Hlozek, OK7AN'#10'http://www.ok7an.com'
     ParentColor = False
   end
