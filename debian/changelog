@@ -1,3 +1,9 @@
+cqrprop (0.0.6-1) unstable; urgency=low
+
+  * configuration reloading fixed
+
+ -- Petr Hlozek <petr@ok2cqr.com>  Sun, 16 Aug 2020 17:56:34 +0100
+
 cqrprop (0.0.5-1) unstable; urgency=low
 
   * windows was still on top - fixed
