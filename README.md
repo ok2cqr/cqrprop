@@ -13,6 +13,21 @@ sudo apt-get update
 sudo apt-get install cqrprop
 ```
 
+How to build CQRPROP from source code?
+---------------------------------------
+
+Application is developed in Lazarus 2.x. You have to install Free Pascal compiler and Lazarus to build the CQRPROP.
+
+```
+sudo apt-get install git lazarus-ide lcl lcl-gtk2 lcl-nogui lcl-units lcl-utils lazarus lazarus-doc lazarus-src \
+         fp-units-misc fp-units-rtl fp-utils fpc fpc-source libssl-dev
+git clone https://github.com/ok2cqr/cqrprop.git
+cd cqrprop
+make 
+sudo make install 
+```
+
+
 Screenshots:
 ------------
 
