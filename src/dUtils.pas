@@ -29,7 +29,11 @@ implementation
 
 function TdmUtils.GetAppConfigFileName: string;
 begin
+  {$IFDEF DARWIN}
+  Result := ExtractFilePath(ExpandFileName('~/Library/Preferences/cqrprop')) + 'cqrprop' + DirectorySeparator + 'cqrprop.cfg';
+  {$ELSE}
   Result := ExtractFilePath(GetAppConfigFile(False)) + 'cqrprop' + DirectorySeparator + 'cqrprop.cfg';
+  {$ENDIF}
 end;
 
 function TdmUtils.GetProxyEnvValue(const ProxyType: TProxyType): string;
