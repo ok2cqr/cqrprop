@@ -57,6 +57,9 @@ begin
   finally
     FreeAndNil(ini)
   end;
+  {$IFDEF DARWIN}
+  btnOpenWeb.Visible := False;
+  {$ENDIF}
 end;
 
 procedure TfrmOptions.btnOKClick(Sender: TObject);

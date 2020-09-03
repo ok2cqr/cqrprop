@@ -13,20 +13,20 @@ inherited frmOptions: TfrmOptions
     Height = 136
     Top = 8
     Width = 456
-    ClientHeight = 134
-    ClientWidth = 454
+    ClientHeight = 117
+    ClientWidth = 446
     TabOrder = 0
     object Label1: TLabel
       Left = 16
-      Height = 15
+      Height = 16
       Top = 8
-      Width = 239
+      Width = 212
       Caption = 'Download propagation image from:'
       ParentColor = False
     end
     object edtDownloadLink: TEdit
       Left = 16
-      Height = 33
+      Height = 22
       Top = 40
       Width = 352
       TabOrder = 0
@@ -34,9 +34,9 @@ inherited frmOptions: TfrmOptions
     end
     object btnOpenWeb: TButton
       Left = 16
-      Height = 33
+      Height = 20
       Top = 88
-      Width = 351
+      Width = 302
       AutoSize = True
       Caption = 'Open http://www.hamqsl.com/solar.html website'
       OnClick = btnOpenWebClick
@@ -48,20 +48,20 @@ inherited frmOptions: TfrmOptions
     Height = 128
     Top = 152
     Width = 456
-    ClientHeight = 126
-    ClientWidth = 454
+    ClientHeight = 109
+    ClientWidth = 446
     TabOrder = 1
     object Label2: TLabel
       Left = 16
-      Height = 15
+      Height = 16
       Top = 32
-      Width = 138
+      Width = 127
       Caption = 'Refresh image every '
       ParentColor = False
     end
     object edtRefreshTime: TSpinEdit
       Left = 160
-      Height = 33
+      Height = 21
       Top = 24
       Width = 74
       MinValue = 2
@@ -70,23 +70,23 @@ inherited frmOptions: TfrmOptions
     end
     object Label3: TLabel
       Left = 248
-      Height = 15
+      Height = 16
       Top = 32
-      Width = 54
+      Width = 48
       Caption = 'minutes'
       ParentColor = False
     end
     object Label4: TLabel
       Left = 16
-      Height = 15
+      Height = 16
       Top = 80
-      Width = 31
+      Width = 27
       Caption = 'Wait'
       ParentColor = False
     end
     object edtWaitTime: TSpinEdit
       Left = 64
-      Height = 33
+      Height = 21
       Top = 72
       Width = 74
       MinValue = 2
@@ -95,9 +95,9 @@ inherited frmOptions: TfrmOptions
     end
     object Label5: TLabel
       Left = 149
-      Height = 15
+      Height = 16
       Top = 80
-      Width = 276
+      Width = 250
       Caption = 'seconds  before the first image download'
       ParentColor = False
     end
