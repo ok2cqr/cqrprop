@@ -4,6 +4,9 @@ Legend:
   - bugfix
 --------------------
 
+0.0.7 (2021-10-07)
+  - loading images fixed
+
 0.0.5 (2018-10-08)
   - windows was still on top - fixed
 
