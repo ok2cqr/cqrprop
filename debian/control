@@ -9,7 +9,7 @@ Homepage: http://www.ok2cqr.com
 
 Package: cqrprop
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libssl-dev
+Depends: ${shlibs:Depends}, ${misc:Depends}, libssl-dev, libgtk2.0-0
 Description: Shows propagation data provided by Paul, N0NBH
  Shows propagation data provided by Paul, N0NBH on the Linux desktop. The
  source page of the propagation images is http://www.hamqsl.com/solar.html
