@@ -1,3 +1,9 @@
+cqrprop (0.0.7-1) unstable; urgency=low
+
+  * loading images fixed
+
+ -- Petr Hlozek <petr@ok2cqr.com>  Thu, 07 Oct 2021 20:53:12 +0100
+
 cqrprop (0.0.6-1) unstable; urgency=low
 
   * configuration reloading fixed
