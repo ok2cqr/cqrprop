@@ -8,6 +8,8 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   Menus, ActnList, fCommon, httpsend, IniFiles, LazFileUtils, ssl_openssl_lib;
 
+const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:93.0) Gecko/20100101 Firefox/93.0';
+
 type
 
   { TfrmShowPropForm }
@@ -121,6 +123,7 @@ begin
     Http.ProxyPort := IntToStr(ProxyPort);
     Http.ProxyUser := ProxyUser;
     Http.ProxyPass := ProxyPass;
+    Http.UserAgent := USER_AGENT;
 
     Result := Http.HTTPMethod('GET', Url);
     if Result then
