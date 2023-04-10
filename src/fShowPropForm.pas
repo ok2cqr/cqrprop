@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Menus, ActnList, fCommon, httpsend, IniFiles, LazFileUtils, ssl_openssl_lib;
+  Menus, ActnList, fCommon, httpsend, IniFiles, LazFileUtils, ssl_openssl_lib,
+  ssl_openssl11, ssl_openssl11_lib, openssl, ssl_openssl;
 
 const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:93.0) Gecko/20100101 Firefox/93.0';
 
@@ -131,6 +132,9 @@ begin
       Mem.Seek(0, soFromBeginning);
       Mem.CopyFrom(Http.Document, 0);
     end
+    else begin
+      Writeln('DEBUG:', http.Sock.LastErrorDesc);
+    end;
   finally
     FreeAndNil(Http);
     FreeAndNil(Mem)
