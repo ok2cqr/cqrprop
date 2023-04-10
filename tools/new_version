@@ -25,7 +25,7 @@ echo cqrprop_"$VERSION"_$ARCH.tar.gz
 mkdir $CTMP/cqrprop-$VERSION -p
 mkdir $FINAL -p
 cd $CTMP
-git clone git://github.com/ok2cqr/cqrprop.git cqrprop-$VERSION
+git clone https://github.com/ok2cqr/cqrprop.git cqrprop-$VERSION
 tar -cvzf cqrprop_$VERSION.orig.tar.gz --exclude='debian' --exclude='.git' cqrprop-$VERSION
 cd cqrprop-$VERSION
 debuild -i -I -S
