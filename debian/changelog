@@ -1,3 +1,9 @@
+cqrprop (0.0.8-1) unstable; urgency=low
+
+  * loading images fixed
+
+ -- Petr Hlozek <petr@ok2cqr.com>  Mon, 10 Apr 2023 14:41:35 +0100
+
 cqrprop (0.0.7-1) unstable; urgency=low
 
   * loading images fixed

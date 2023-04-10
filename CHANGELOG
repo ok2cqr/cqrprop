@@ -4,6 +4,9 @@ Legend:
   - bugfix
 --------------------
 
+0.0.8 (2023-04-10)
+  - loading images over ssl fixed
+
 0.0.7 (2021-10-07)
   - loading images fixed
 

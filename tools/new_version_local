@@ -1,6 +1,6 @@
 #!/bin/bash
  
-VERSION=0.0.5
+VERSION=0.0.8
 # cqrprop version
 
 FINAL=$HOME/projects/final_cqrprop/
