@@ -4,6 +4,10 @@ Legend:
   - bugfix
 --------------------
 
+0.0.9
+  # synapse libraries updated (http requests)
+  # updated to Ubuntu 24.04 and Lazarus 3.0
+
 0.0.8 (2023-04-10)
   - loading images over ssl fixed
 

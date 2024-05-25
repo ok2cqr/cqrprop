@@ -5,7 +5,7 @@ A small application that shows propagation data from Paul, N0NBH website http://
 How to install CQRPROP?
 ------------------------
 
-Ubuntu 22.04 and 22.10 users can use my PPA on Launchpad:
+Ubuntu 24.04 users can use my PPA on Launchpad:
 
 ```
 sudo add-apt-repository ppa:ok2cqr/cqrprop
@@ -16,7 +16,7 @@ sudo apt-get install cqrprop
 How to build CQRPROP from source code?
 ---------------------------------------
 
-Application is developed in Lazarus 2.x. You have to install Free Pascal compiler and Lazarus to build the CQRPROP.
+Application is developed in Lazarus 3.x. You have to install Free Pascal compiler and Lazarus to build the CQRPROP.
 
 ```
 sudo apt-get install git lazarus-ide lcl lcl-gtk2 lcl-nogui lcl-units lcl-utils lazarus lazarus-doc lazarus-src \

@@ -1,3 +1,10 @@
+cqrprop (0.0.9-1) unstable; urgency=low
+
+  * synapse libraries updated (http requests)
+  * updated to Ubuntu 24.04 and Lazarus 3.0
+
+ -- Petr Hlozek <petr@ok2cqr.com>  Sat, 25 Apr 2025 19:48:05 +0100
+
 cqrprop (0.0.8-1) unstable; urgency=low
 
   * loading images fixed
