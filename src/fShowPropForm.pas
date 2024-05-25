@@ -6,8 +6,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Menus, ActnList, fCommon, httpsend, IniFiles, LazFileUtils, ssl_openssl_lib,
-  ssl_openssl11, ssl_openssl11_lib, openssl, ssl_openssl;
+  Menus, ActnList, fCommon, httpsend, IniFiles, LazFileUtils,
+  openssl, ssl_openssl3;
 
 const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:93.0) Gecko/20100101 Firefox/93.0';
 
@@ -104,10 +104,10 @@ var
   Http: THTTPSend;
   Mem: TFileStream;
 
-  ProxyHost: string;
+  ProxyHost: string = '';
   ProxyPort: integer = 0;
-  ProxyUser: string;
-  ProxyPass: string;
+  ProxyUser: string = '';
+  ProxyPass: string = '';
   ProxyType: TProxyType;
 begin
   Http := THTTPSend.Create;
