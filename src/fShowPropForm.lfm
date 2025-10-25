@@ -1,7 +1,7 @@
 inherited frmShowPropForm: TfrmShowPropForm
-  Left = 1023
+  Left = 1267
   Height = 311
-  Top = 413
+  Top = 327
   Width = 155
   BorderStyle = bsNone
   Caption = 'frmShowPropForm'

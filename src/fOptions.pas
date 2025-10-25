@@ -13,22 +13,22 @@ type
   { TfrmOptions }
 
   TfrmOptions = class(TfrmCommon)
-    btnOpenWeb: TButton;
-    btnOK: TButton;
-    btnCancel: TButton;
-    edtDownloadLink: TEdit;
-    edtRefreshTime: TSpinEdit;
-    edtWaitTime: TSpinEdit;
-    GroupBox1: TGroupBox;
-    GroupBox2: TGroupBox;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    procedure btnOKClick(Sender: TObject);
-    procedure btnOpenWebClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
+    btnOpenWeb : TButton;
+    btnOK : TButton;
+    btnCancel : TButton;
+    edtDownloadLink : TEdit;
+    edtRefreshTime : TSpinEdit;
+    edtWaitTime : TSpinEdit;
+    GroupBox1 : TGroupBox;
+    GroupBox2 : TGroupBox;
+    Label1 : TLabel;
+    Label2 : TLabel;
+    Label3 : TLabel;
+    Label4 : TLabel;
+    Label5 : TLabel;
+    procedure btnOKClick(Sender : TObject);
+    procedure btnOpenWebClick(Sender : TObject);
+    procedure FormShow(Sender : TObject);
   private
     { private declarations }
   public
@@ -36,7 +36,7 @@ type
   end;
 
 var
-  frmOptions: TfrmOptions;
+  frmOptions : TfrmOptions;
 
 implementation
 
@@ -44,14 +44,15 @@ implementation
 
 uses dUtils;
 
-procedure TfrmOptions.FormShow(Sender: TObject);
+procedure TfrmOptions.FormShow(Sender : TObject);
 var
-  ini: TIniFile;
+  ini : TIniFile;
 begin
   inherited;
   ini := TIniFile.Create(dmUtils.GetAppConfigFileName);
   try
-    edtDownloadLink.Text := ini.ReadString('App', 'DownloadLink', 'http://www.hamqsl.com/solar2.php');
+    edtDownloadLink.Text := ini.ReadString('App', 'DownloadLink',
+      'http://www.hamqsl.com/solar2.php');
     edtRefreshTime.Value := ini.ReadInteger('App', 'RefreshTime', 5);
     edtWaitTime.Value := ini.ReadInteger('App', 'WaitTime', 2)
   finally
@@ -62,9 +63,9 @@ begin
   {$ENDIF}
 end;
 
-procedure TfrmOptions.btnOKClick(Sender: TObject);
+procedure TfrmOptions.btnOKClick(Sender : TObject);
 var
-  ini: TIniFile;
+  ini : TIniFile;
 begin
   ini := TIniFile.Create(dmUtils.GetAppConfigFileName);
   try
@@ -80,9 +81,9 @@ begin
   ModalResult := mrOk;
 end;
 
-procedure TfrmOptions.btnOpenWebClick(Sender: TObject);
+procedure TfrmOptions.btnOpenWebClick(Sender : TObject);
 var
-  Process: TProcess;
+  Process : TProcess;
 begin
   Process := TProcess.Create(nil);
   try
@@ -95,4 +96,3 @@ begin
 end;
 
 end.
-

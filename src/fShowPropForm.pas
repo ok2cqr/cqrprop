@@ -9,50 +9,53 @@ uses
   Menus, ActnList, fCommon, httpsend, IniFiles, LazFileUtils,
   openssl, ssl_openssl3;
 
-const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:93.0) Gecko/20100101 Firefox/93.0';
+const
+  USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:93.0) Gecko/20100101 Firefox/93.0';
 
 type
 
   { TfrmShowPropForm }
 
   TfrmShowPropForm = class(TfrmCommon)
-    acProp: TActionList;
-    acOptions: TAction;
-    acAbout: TAction;
-    acRefresh: TAction;
-    acClose: TAction;
-    imgProp: TImage;
-    MenuItem1: TMenuItem;
-    MenuItem2: TMenuItem;
-    MenuItem3: TMenuItem;
-    MenuItem5: TMenuItem;
-    MenuItem6: TMenuItem;
-    MenuItem7: TMenuItem;
-    pnlInfo: TPanel;
-    popMenu: TPopupMenu;
-    tmrWait: TTimer;
-    tmrImageDownload: TTimer;
-    procedure acAboutExecute(Sender: TObject);
-    procedure acCloseExecute(Sender: TObject);
-    procedure acOptionsExecute(Sender: TObject);
-    procedure acRefreshExecute(Sender: TObject);
-    procedure FormShow(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure imgPropMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
-    procedure imgPropMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
-    procedure imgPropMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
-    procedure tmrImageDownloadTimer(Sender: TObject);
-    procedure tmrWaitTimer(Sender: TObject);
+    acProp : TActionList;
+    acOptions : TAction;
+    acAbout : TAction;
+    acRefresh : TAction;
+    acClose : TAction;
+    imgProp : TImage;
+    MenuItem1 : TMenuItem;
+    MenuItem2 : TMenuItem;
+    MenuItem3 : TMenuItem;
+    MenuItem5 : TMenuItem;
+    MenuItem6 : TMenuItem;
+    MenuItem7 : TMenuItem;
+    pnlInfo : TPanel;
+    popMenu : TPopupMenu;
+    tmrWait : TTimer;
+    tmrImageDownload : TTimer;
+    procedure acAboutExecute(Sender : TObject);
+    procedure acCloseExecute(Sender : TObject);
+    procedure acOptionsExecute(Sender : TObject);
+    procedure acRefreshExecute(Sender : TObject);
+    procedure FormShow(Sender : TObject);
+    procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
+    procedure imgPropMouseDown(Sender : TObject; Button : TMouseButton;
+      Shift : TShiftState; X, Y : Integer);
+    procedure imgPropMouseMove(Sender : TObject; Shift : TShiftState; X, Y : Integer);
+    procedure imgPropMouseUp(Sender : TObject; Button : TMouseButton;
+      Shift : TShiftState; X, Y : Integer);
+    procedure tmrImageDownloadTimer(Sender : TObject);
+    procedure tmrWaitTimer(Sender : TObject);
   private
-    OldX, OldY: integer;
-    FormMoving: boolean;
+    OldX, OldY : Integer;
+    FormMoving : Boolean;
 
-    function GetTimerInterval: integer;
-    function GetWaitInterval: integer;
+    function GetTimerInterval : Integer;
+    function GetWaitInterval : Integer;
   public
-    ImageFileName: string;
-    ImageFile: TFileStream;
-    OldImageFileName: string;
+    ImageFileName : String;
+    ImageFile : TFileStream;
+    OldImageFileName : String;
 
     procedure SynShowImage;
   end;
@@ -60,13 +63,13 @@ type
 type
   TImageDownloadThread = class(TThread)
   private
-    function DownloadToTempFile(const Url, FileName: string): boolean;
+    function DownloadToTempFile(const Url, FileName : String) : Boolean;
   protected
     procedure Execute; override;
   end;
 
 var
-  frmShowPropForm: TfrmShowPropForm;
+  frmShowPropForm : TfrmShowPropForm;
 
 implementation
 
@@ -76,14 +79,15 @@ uses fAbout, fOptions, dUtils;
 
 procedure TImageDownloadThread.Execute;
 var
-  ini: TIniFile;
-  Url: string;
+  ini : TIniFile;
+  Url : String;
 begin
   ini := TIniFile.Create(dmUtils.GetAppConfigFileName);
   try
     Url := ini.ReadString('App', 'DownloadLink', 'http://www.hamqsl.com/solar2.php');
 
-    frmShowPropForm.ImageFileName := ExtractFilePath(dmUtils.GetAppConfigFileName) + 'solar' + IntToStr(Random(10000));
+    frmShowPropForm.ImageFileName :=
+      ExtractFilePath(dmUtils.GetAppConfigFileName) + 'solar' + IntToStr(Random(10000));
 
     if DownloadToTempFile(Url, frmShowPropForm.ImageFileName) then
     begin
@@ -99,16 +103,16 @@ begin
   end;
 end;
 
-function TImageDownloadThread.DownloadToTempFile(const Url, FileName: string): boolean;
+function TImageDownloadThread.DownloadToTempFile(const Url, FileName : String) : Boolean;
 var
-  Http: THTTPSend;
-  Mem: TFileStream;
+  Http : THTTPSend;
+  Mem : TFileStream;
 
-  ProxyHost: string = '';
-  ProxyPort: integer = 0;
-  ProxyUser: string = '';
-  ProxyPass: string = '';
-  ProxyType: TProxyType;
+  ProxyHost : String = '';
+  ProxyPort : Integer = 0;
+  ProxyUser : String = '';
+  ProxyPass : String = '';
+  ProxyType : TProxyType;
 begin
   Http := THTTPSend.Create;
   Mem := TFileStream.Create(FileName, fmCreate);
@@ -141,7 +145,7 @@ begin
   end;
 end;
 
-procedure TfrmShowPropForm.acOptionsExecute(Sender: TObject);
+procedure TfrmShowPropForm.acOptionsExecute(Sender : TObject);
 begin
   frmOptions := TfrmOptions.Create(frmShowPropForm);
   try
@@ -152,7 +156,7 @@ begin
   end;
 end;
 
-procedure TfrmShowPropForm.acAboutExecute(Sender: TObject);
+procedure TfrmShowPropForm.acAboutExecute(Sender : TObject);
 begin
   frmAbout := TfrmAbout.Create(frmShowPropForm);
   try
@@ -162,21 +166,21 @@ begin
   end;
 end;
 
-procedure TfrmShowPropForm.acCloseExecute(Sender: TObject);
+procedure TfrmShowPropForm.acCloseExecute(Sender : TObject);
 begin
   Close();
 end;
 
-procedure TfrmShowPropForm.acRefreshExecute(Sender: TObject);
+procedure TfrmShowPropForm.acRefreshExecute(Sender : TObject);
 var
-  ImageDownloadThread: TImageDownloadThread;
+  ImageDownloadThread : TImageDownloadThread;
 begin
   ImageDownloadThread := TImageDownloadThread.Create(True);
   ImageDownloadThread.FreeOnTerminate := True;
   ImageDownloadThread.Start;
 end;
 
-procedure TfrmShowPropForm.FormShow(Sender: TObject);
+procedure TfrmShowPropForm.FormShow(Sender : TObject);
 begin
   inherited;
 
@@ -189,7 +193,7 @@ begin
   tmrWait.Enabled := True;
 end;
 
-procedure TfrmShowPropForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TfrmShowPropForm.FormClose(Sender : TObject; var CloseAction : TCloseAction);
 begin
   inherited;
   tmrImageDownload.Enabled := False;
@@ -199,7 +203,8 @@ begin
   Application.Terminate;
 end;
 
-procedure TfrmShowPropForm.imgPropMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+procedure TfrmShowPropForm.imgPropMouseDown(Sender : TObject;
+  Button : TMouseButton; Shift : TShiftState; X, Y : Integer);
 begin
   if (Button = mbLeft) then
   begin
@@ -209,7 +214,8 @@ begin
   end;
 end;
 
-procedure TfrmShowPropForm.imgPropMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
+procedure TfrmShowPropForm.imgPropMouseMove(Sender : TObject;
+  Shift : TShiftState; X, Y : Integer);
 begin
   if FormMoving then
   begin
@@ -218,18 +224,19 @@ begin
   end;
 end;
 
-procedure TfrmShowPropForm.imgPropMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+procedure TfrmShowPropForm.imgPropMouseUp(Sender : TObject; Button : TMouseButton;
+  Shift : TShiftState; X, Y : Integer);
 begin
   FormMoving := False;
   SaveWindowPos;
 end;
 
-procedure TfrmShowPropForm.tmrImageDownloadTimer(Sender: TObject);
+procedure TfrmShowPropForm.tmrImageDownloadTimer(Sender : TObject);
 begin
   acRefresh.Execute;
 end;
 
-procedure TfrmShowPropForm.tmrWaitTimer(Sender: TObject);
+procedure TfrmShowPropForm.tmrWaitTimer(Sender : TObject);
 begin
   tmrWait.Enabled := False;
   pnlInfo.Caption := '';
@@ -238,9 +245,9 @@ begin
   acRefresh.Execute;
 end;
 
-function TfrmShowPropForm.GetTimerInterval: integer;
+function TfrmShowPropForm.GetTimerInterval : Integer;
 var
-  ini: TIniFile;
+  ini : TIniFile;
 begin
   ini := TIniFile.Create(dmUtils.GetAppConfigFileName);
   try
@@ -250,9 +257,9 @@ begin
   end;
 end;
 
-function TfrmShowPropForm.GetWaitInterval: integer;
+function TfrmShowPropForm.GetWaitInterval : Integer;
 var
-  ini: TIniFile;
+  ini : TIniFile;
 begin
   ini := TIniFile.Create(dmUtils.GetAppConfigFileName);
   try
@@ -283,10 +290,3 @@ end;
 
 
 end.
-
-
-
-
-
-
-

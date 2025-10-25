@@ -13,30 +13,32 @@ type
 type
   TdmUtils = class(TDataModule)
   private
-    function GetProxyEnvValue(const ProxyType: TProxyType): string;
+    function GetProxyEnvValue(const ProxyType : TProxyType) : String;
   public
-    function GetAppConfigFileName: string;
+    function GetAppConfigFileName : String;
 
-    procedure GetProxyParams(const ProxyType: TProxyType; var ProxyHost: string; var ProxyPort: integer; var ProxyUser, ProxyPass: string);
+    procedure GetProxyParams(const ProxyType : TProxyType; var ProxyHost : String;
+      var ProxyPort : Integer; var ProxyUser, ProxyPass : String);
   end;
 
 var
-  dmUtils: TdmUtils;
+  dmUtils : TdmUtils;
 
 implementation
 
 {$R *.lfm}
 
-function TdmUtils.GetAppConfigFileName: string;
+function TdmUtils.GetAppConfigFileName : String;
 begin
   {$IFDEF DARWIN}
   Result := ExtractFilePath(ExpandFileName('~/Library/Preferences/cqrprop')) + 'cqrprop' + DirectorySeparator + 'cqrprop.cfg';
   {$ELSE}
-  Result := ExtractFilePath(GetAppConfigFile(False)) + 'cqrprop' + DirectorySeparator + 'cqrprop.cfg';
+  Result := ExtractFilePath(GetAppConfigFile(False)) + 'cqrprop' +
+    DirectorySeparator + 'cqrprop.cfg';
   {$ENDIF}
 end;
 
-function TdmUtils.GetProxyEnvValue(const ProxyType: TProxyType): string;
+function TdmUtils.GetProxyEnvValue(const ProxyType : TProxyType) : String;
 begin
   Result := '';
   case ProxyType of
@@ -45,13 +47,14 @@ begin
   end;
 end;
 
-procedure TdmUtils.GetProxyParams(const ProxyType: TProxyType; var ProxyHost: string; var ProxyPort: integer; var ProxyUser, ProxyPass: string);
+procedure TdmUtils.GetProxyParams(const ProxyType : TProxyType;
+  var ProxyHost : String; var ProxyPort : Integer; var ProxyUser, ProxyPass : String);
 var
-  ProxyValue: string = '';
-  HasAuth: boolean = False;
-  ServerPort: string = '';
-  Port: string = '';
-  UserPass: string = '';
+  ProxyValue : String = '';
+  HasAuth : Boolean = False;
+  ServerPort : String = '';
+  Port : String = '';
+  UserPass : String = '';
 begin
   ProxyHost := '';
   ProxyPort := 0;
@@ -70,8 +73,10 @@ begin
 
   if HasAuth then
   begin
-    ServerPort := copy(ProxyValue, Pos('@', ProxyValue) + 1, Length(ProxyValue) - Pos('@', ProxyValue));  //USERNAME:PASSWORD@SERVER:8080
-    Port := copy(ServerPort, Pos(':', ServerPort) + 1, Length(ServerPort) - Pos(':', ServerPort));
+    ServerPort := copy(ProxyValue, Pos('@', ProxyValue) + 1,
+      Length(ProxyValue) - Pos('@', ProxyValue));  //USERNAME:PASSWORD@SERVER:8080
+    Port := copy(ServerPort, Pos(':', ServerPort) + 1, Length(ServerPort) -
+      Pos(':', ServerPort));
     if not TryStrToInt(Port, ProxyPort) then
     begin
       Writeln('Cannot read the proxy port property!');
@@ -79,15 +84,18 @@ begin
       exit;
     end;
 
-    UserPass := copy(ProxyValue, Pos('://', ProxyValue) + 3, Pos('@', ProxyValue) - Pos('://', ProxyValue) - 3);  //USERNAME:PASSWORD
+    UserPass := copy(ProxyValue, Pos('://', ProxyValue) + 3,
+      Pos('@', ProxyValue) - Pos('://', ProxyValue) - 3);  //USERNAME:PASSWORD
 
     ProxyHost := copy(ServerPort, 1, Pos(':', ServerPort) - 1);
     ProxyUser := copy(UserPass, 1, Pos(':', UserPass) - 1);
     ProxyPass := copy(UserPass, Pos(':', UserPass) + 1, Length(UserPass));
   end
   else begin
-    ServerPort := copy(ProxyValue, Pos('://', ProxyValue) + 3, Length(ProxyValue) - Pos('://', ProxyValue) - 2);  //SERVER:8080
-    Port := copy(ServerPort, Pos(':', ServerPort) + 1, Length(ServerPort) - Pos(':', ServerPort));
+    ServerPort := copy(ProxyValue, Pos('://', ProxyValue) + 3,
+      Length(ProxyValue) - Pos('://', ProxyValue) - 2);  //SERVER:8080
+    Port := copy(ServerPort, Pos(':', ServerPort) + 1, Length(ServerPort) -
+      Pos(':', ServerPort));
     if not TryStrToInt(Port, ProxyPort) then
     begin
       Writeln('Cannot read the proxy port property!');
@@ -99,5 +107,3 @@ begin
 end;
 
 end.
-
-

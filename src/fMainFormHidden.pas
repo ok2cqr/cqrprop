@@ -12,8 +12,8 @@ type
   { TfrmMainFormHidden }
 
   TfrmMainFormHidden = class(TForm)
-    tmrMain: TTimer;
-    procedure tmrMainTimer(Sender: TObject);
+    tmrMain : TTimer;
+    procedure tmrMainTimer(Sender : TObject);
   private
     { private declarations }
   public
@@ -21,7 +21,7 @@ type
   end;
 
 var
-  frmMainFormHidden: TfrmMainFormHidden;
+  frmMainFormHidden : TfrmMainFormHidden;
 
 implementation
 
@@ -29,13 +29,12 @@ implementation
 
 uses fShowPropForm;
 
-{ TfrmMainFormHidden }
+  { TfrmMainFormHidden }
 
-procedure TfrmMainFormHidden.tmrMainTimer(Sender: TObject);
+procedure TfrmMainFormHidden.tmrMainTimer(Sender : TObject);
 begin
   tmrMain.Enabled := False;
   frmShowPropForm.Show;
 end;
 
 end.
-

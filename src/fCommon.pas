@@ -5,7 +5,8 @@ unit fCommon;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, iniFiles, LazFileUtils;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
+  iniFiles, LazFileUtils;
 
 const
   APP_NAME = 'cqrprop';
@@ -15,39 +16,39 @@ type
   { TfrmCommon }
 
   TfrmCommon = class(TForm)
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
+    procedure FormShow(Sender : TObject);
   private
-    function GetLocalConfigFile: string;
+    function GetLocalConfigFile : String;
   public
     procedure SaveWindowPos;
     procedure LoadWindowPos;
 
-    property ConfigFile: string read GetLocalConfigFile;
+    property ConfigFile : String read GetLocalConfigFile;
   end;
 
 var
-  frmCommon: TfrmCommon;
+  frmCommon : TfrmCommon;
 
 implementation
 
 {$R *.lfm}
 
-procedure TfrmCommon.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TfrmCommon.FormClose(Sender : TObject; var CloseAction : TCloseAction);
 begin
   SaveWindowPos;
 end;
 
-procedure TfrmCommon.FormShow(Sender: TObject);
+procedure TfrmCommon.FormShow(Sender : TObject);
 begin
   LoadWindowPos;
 end;
 
-function TfrmCommon.GetLocalConfigFile: string;
+function TfrmCommon.GetLocalConfigFile : String;
 
-  procedure CreateEmptyFile(emFile: string);
+  procedure CreateEmptyFile(emFile : String);
   var
-    f: TextFile;
+    f : TextFile;
   begin
     AssignFile(f, emFile);
     Rewrite(f);
@@ -56,7 +57,7 @@ function TfrmCommon.GetLocalConfigFile: string;
   end;
 
 var
-  dir: string;
+  dir : String;
 begin
   dir := ExtractFilePath(GetAppConfigFile(False)) + APP_NAME + DirectorySeparator;
   if DirectoryExistsUTF8(dir) then
@@ -73,7 +74,7 @@ end;
 
 procedure TfrmCommon.SaveWindowPos;
 var
-  iniLocal: TIniFile;
+  iniLocal : TIniFile;
 begin
   iniLocal := TIniFile.Create(GetLocalConfigFile);
   try
@@ -93,7 +94,7 @@ end;
 
 procedure TfrmCommon.LoadWindowPos;
 var
-  iniLocal: TIniFile;
+  iniLocal : TIniFile;
 begin
   iniLocal := TIniFile.Create(GetLocalConfigFile);
   try
@@ -115,4 +116,3 @@ end;
 
 
 end.
-
